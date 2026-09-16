@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-171 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+172 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -133,7 +133,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **Stepper** — Animated multi-step progress indicator with active state transitions. (deps: motion)
 - **TiltedCard** — 3D perspective tilt card reacting to pointer. (deps: motion)
 
-## Backgrounds (56)
+## Backgrounds (57)
 
 - **AcidSquares** — A crystalline corridor of stacked squares receding into depth. (deps: ogl)
 - **AeroShards** — A GPU-driven wind sculpture of folded foil shards with crisp detail, content-safe placements, and responsive pointer interactions. (deps: vgpu)
@@ -183,6 +183,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **RippleGrid** — A grid that continuously animates with a ripple effect. (deps: ogl)
 - **Scanner** — Calm interference bands sweeping across the screen like an oscilloscope. (deps: ogl)
 - **ShapeGrid** — Animated grid with shape variants (square, hexagon, circle, triangle) + direction customization. (deps: none)
+- **ShapeWaves** — A WebGPU field of triangles, circles and squares that brighten and grow along rolling waves, with an optional text cutout the waves flow around. (deps: vgpu)
 - **SideRays** — Animated light rays emanating from the side with customizable colors and speed. (deps: ogl)
 - **Silk** — Smooth waves background with soft lighting. (deps: @react-three/fiber,three)
 - **SlicedWaves** — A grid of soft glowing bars rippling like a slatted equalizer. (deps: ogl)
