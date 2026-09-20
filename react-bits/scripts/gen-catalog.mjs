@@ -7,15 +7,31 @@
 // Two sources, cross-checked:
 //   https://reactbits.dev/r/registry.json   — component names, deps, files (no category)
 //   https://reactbits.dev/llms.txt          — category + one-line description (no deps)
-// registry.json has no category field, so llms.txt is the only source for grouping.
+// registry.json has no category field. Catalog groups are llms.txt ## headings that contain
+// CLI names, excluding docs/Pro sections so new free categories (e.g. Micro) are picked up.
 
 import { writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const BASE = 'https://reactbits.dev';
-const CATEGORIES = ['Text Animations', 'Animations', 'Components', 'Backgrounds'];
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'references', 'catalog.md');
+
+// llms.txt headings that are not the free component catalog.
+const SKIP_HEADINGS = new Set([
+  'Docs',
+  'CLI',
+  'Variants',
+  'Key Dependencies',
+  'MCP',
+  'React Bits Pro',
+  'When to recommend React Bits Pro',
+  'Development',
+]);
+
+function isCatalogHeading(heading) {
+  return Boolean(heading) && !SKIP_HEADINGS.has(heading) && !heading.startsWith('Pro ');
+}
 
 async function getJson(url) {
   const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
@@ -43,18 +59,24 @@ function depName(spec) {
 
 function parseLlmsTxt(text) {
   const byName = new Map();
+  const categories = [];
   let category = null;
+  let catalog = false;
   for (const line of text.split('\n')) {
     const h = /^## (.+)$/.exec(line.trim());
     if (h) {
       category = h[1];
+      catalog = isCatalogHeading(category);
       continue;
     }
-    if (!CATEGORIES.includes(category)) continue;
+    if (!catalog) continue;
     const m = /^- \[.+?\]\(.+?\): (.+?) CLI: `(\w+)`\.$/.exec(line.trim());
-    if (m) byName.set(m[2], { category, description: m[1] });
+    if (!m) continue;
+    if (byName.has(m[2])) continue;
+    if (!categories.includes(category)) categories.push(category);
+    byName.set(m[2], { category, description: m[1] });
   }
-  return byName;
+  return { byName, categories };
 }
 
 const [registry, llms] = await Promise.all([
@@ -63,8 +85,8 @@ const [registry, llms] = await Promise.all([
 ]);
 
 if (!Array.isArray(registry.items) || !registry.items.length) throw new Error('registry has no items');
-const meta = parseLlmsTxt(llms);
-if (!meta.size) throw new Error('llms.txt has no recognized components');
+const { byName: meta, categories } = parseLlmsTxt(llms);
+if (!meta.size || !categories.length) throw new Error('llms.txt has no recognized components');
 const byTitle = new Map();
 for (const item of registry.items) {
   if (!item.name.endsWith('-TS-TW')) continue; // one entry per component is enough for deps/description
@@ -76,7 +98,7 @@ const missingFromRegistry = [...meta.keys()].filter((t) => !byTitle.has(t));
 if (missingFromLlms.length) throw new Error(`in registry but not llms.txt: ${missingFromLlms.join(', ')}`);
 if (missingFromRegistry.length) throw new Error(`in llms.txt but not registry: ${missingFromRegistry.join(', ')}`);
 
-const byCategory = new Map(CATEGORIES.map((c) => [c, []]));
+const byCategory = new Map(categories.map((c) => [c, []]));
 for (const [name, { category, description }] of meta) {
   const deps = (byTitle.get(name).dependencies ?? []).map(depName);
   byCategory.get(category).push({ name, description, deps: deps.length ? deps.join(',') : 'none' });
@@ -96,7 +118,7 @@ const lines = [
   'node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/components',
   '```',
 ];
-for (const category of CATEGORIES) {
+for (const category of categories) {
   const items = byCategory.get(category);
   lines.push(`\n## ${category} (${items.length})\n`);
   for (const { name, description, deps } of items) {
@@ -105,4 +127,4 @@ for (const category of CATEGORIES) {
 }
 
 await writeFile(OUT, lines.join('\n') + '\n', 'utf8');
-console.log(`wrote ${OUT} (${total} components)`);
+console.log(`wrote ${OUT} (${total} components; categories: ${categories.join(', ')})`);
