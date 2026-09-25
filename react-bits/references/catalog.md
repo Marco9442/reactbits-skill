@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-207 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+208 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -9,7 +9,7 @@ Format: `Name — one-line description (deps: ...)`. Fetch with:
 node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/components
 ```
 
-## Text Animations (32)
+## Text Animations (33)
 
 - **ASCIIText** — Renders text with an animated ASCII background for a retro feel. (deps: three)
 - **BlurText** — Text starts blurred then crisply resolves for a soft-focus reveal effect. (deps: motion)
@@ -36,6 +36,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **SplitFlapText** — Mechanical split-flap departure board that clacks through to each new phrase. (deps: none)
 - **SplitText** — Splits text into characters / words for staggered entrance animation. (deps: gsap,@gsap/react)
 - **StrokeText** — Outlined letterforms draw themselves on, then flood with fill. (deps: gsap)
+- **TechText** — A wordmark whose letters turn into dashed vector paths under the cursor. Grab any letter to drag it off the baseline and it springs back home. (deps: none)
 - **TextCursor** — Make any text element follow your cursor, leaving a trail of copies behind it. (deps: motion)
 - **TextLoop** — A seamless text marquee that flows along curved SVG paths. (deps: gsap)
 - **TextPressure** — Characters scale / warp interactively based on pointer pressure zone. (deps: none)
