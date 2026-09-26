@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-208 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+209 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -45,7 +45,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **VariableProximity** — Letter styling changes continuously with pointer distance mapping. (deps: motion)
 - **WarpText** — WebGL warp that bends and refracts the text around the pointer. (deps: ogl)
 
-## Animations (39)
+## Animations (40)
 
 - **AnimatedContent** — Wrapper that animates any children on scroll or mount with configurable direction, distance, duration, easing and disappear options. (deps: gsap)
 - **Antigravity** — 3D antigravity particle field that repels from the cursor with smooth motion. (deps: @react-three/fiber,three)
@@ -57,6 +57,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **DitherVeil** — A photo printed as a 1-bit dither that the cursor burns through to full colour, leaving a trail that knits back cell by cell. (deps: ogl)
 - **ElasticMesh** — Spring-mesh surface that stretches under the pointer and settles back with damped physics. (deps: ogl)
 - **ElectricBorder** — Jittery electric energy border with animated arcs, glow and adjustable intensity. (deps: none)
+- **ElectricLogo** — Turns any SVG or PNG into a living lightning outline, with flowing strands, arcs that leap off the edges and a charge that follows the cursor. (deps: ogl)
 - **FadeContent** — Simple directional fade / slide entrance / exit wrapper with threshold-based activation. (deps: gsap)
 - **GhostCursor** — Semi-transparent ghost cursor that smoothly follows the real cursor with a trailing effect. (deps: three)
 - **GlareHover** — Adds a realistic moving glare highlight on hover over any element. (deps: none)
