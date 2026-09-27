@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-209 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+210 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -88,7 +88,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **SwarmCursor** — Flocking particle swarm that chases the pointer, jostles for space and drifts apart at rest. (deps: ogl)
 - **TargetCursor** — A cursor follow animation with 4 corners that lock onto targets. (deps: react-dom,gsap)
 
-## Components (45)
+## Components (46)
 
 - **AccordionGallery** — Panels expand on hover or focus, revealing parallax imagery and captions. (deps: gsap)
 - **AnimatedList** — List items enter with staggered motion variants for polished reveals. (deps: motion)
@@ -108,6 +108,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **DomeGallery** — Immersive 3D dome gallery projecting images on a hemispheric surface. (deps: @use-gesture/react)
 - **DriftWall** — An endless perspective wall of tiles drifting past, lifting on hover. (deps: none)
 - **ElasticSlider** — Slider handle stretches elastically then snaps with spring physics. (deps: motion)
+- **FlexCarousel** — An infinite image row that flows through invisible liquid glass at its edges, with four bend presets, five entrances, a speed squeeze and click to focus. (deps: ogl)
 - **FlowingMenu** — Liquid flowing active indicator glides between menu items. (deps: gsap)
 - **FluidGlass** — Glassmorphism container with animated liquid distortion refraction. (deps: three,@react-three/fiber,@react-three/drei,maath)
 - **FlyingPosters** — 3D posters rotate on scroll infinitely. (deps: ogl)
