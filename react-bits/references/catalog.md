@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-211 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+212 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -88,7 +88,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **SwarmCursor** — Flocking particle swarm that chases the pointer, jostles for space and drifts apart at rest. (deps: ogl)
 - **TargetCursor** — A cursor follow animation with 4 corners that lock onto targets. (deps: react-dom,gsap)
 
-## Components (46)
+## Components (47)
 
 - **AccordionGallery** — Panels expand on hover or focus, revealing parallax imagery and captions. (deps: gsap)
 - **AnimatedList** — List items enter with staggered motion variants for polished reveals. (deps: motion)
@@ -99,6 +99,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **CardSwap** — Cards animate position swapping with smooth layout transitions. (deps: gsap)
 - **Carousel** — Responsive carousel with touch gestures, looping and transitions. (deps: motion,react-icons)
 - **ChromaGrid** — A responsive grid of grayscale tiles. Hovering the grid reaveals their colors. (deps: gsap)
+- **CircularCarousel** — A 3D ring of images with four layouts, bendable cards, depth fade, momentum drag, snapping and click to focus. (deps: none)
 - **CircularGallery** — Circular orbit gallery rotating images. (deps: ogl)
 - **Counter** — Flexible animated counter supporting increments + easing. (deps: motion)
 - **CurvedInput** — Arc-bent input bar with text, caret and submit button all following the curve. (deps: none)
