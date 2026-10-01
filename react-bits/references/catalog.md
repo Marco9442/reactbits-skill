@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-212 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+213 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -175,7 +175,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **WakeSlider** — Range slider drawn as thin bars with no thumb: drag speed raises a wake that trails behind the handle and flattens again at rest. (deps: motion)
 - **WarmTooltip** — Tooltip group with one shared delay: the first label waits and pops from its trigger, then siblings open instantly while the group is warm, with an optional velocity lean. (deps: react-dom,motion)
 
-## Backgrounds (58)
+## Backgrounds (59)
 
 - **AcidSquares** — A crystalline corridor of stacked squares receding into depth. (deps: ogl)
 - **AeroShards** — A GPU-driven wind sculpture of folded foil shards with crisp detail, content-safe placements, and responsive pointer interactions. (deps: vgpu)
@@ -216,6 +216,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **MoltenMetal** — Swirling caustic plasma filaments with molten, white-hot cores. (deps: ogl)
 - **Orb** — Floating energy orb with customizable hover effect. (deps: ogl)
 - **Particles** — Configurable particle system. (deps: ogl)
+- **PatternWaves** — A lit halftone surface of dots, lines, crosses or glyphs that moves like draped silk, rolling swells or ripples, with six presets, one-color theming and a cursor that sends ripples through it. (deps: ogl)
 - **PixelBlast** — Exploding pixel particle bursts with optional liquid postprocessing. (deps: postprocessing,three)
 - **PixelSnow** — Falling pixelated snow effect with customizable density and speed. (deps: three)
 - **Plasma** — Organic plasma gradients swirl + morph with smooth turbulence. (deps: ogl)
