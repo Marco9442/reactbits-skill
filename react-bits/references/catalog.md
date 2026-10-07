@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-213 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+214 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -45,13 +45,14 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **VariableProximity** — Letter styling changes continuously with pointer distance mapping. (deps: motion)
 - **WarpText** — WebGL warp that bends and refracts the text around the pointer. (deps: ogl)
 
-## Animations (40)
+## Animations (41)
 
 - **AnimatedContent** — Wrapper that animates any children on scroll or mount with configurable direction, distance, duration, easing and disappear options. (deps: gsap)
 - **Antigravity** — 3D antigravity particle field that repels from the cursor with smooth motion. (deps: @react-three/fiber,three)
 - **BlobCursor** — Organic blob cursor that smoothly follows the pointer with inertia and elastic morphing. (deps: gsap)
 - **ClickSpark** — Creates particle spark bursts at click position. (deps: none)
 - **Crosshair** — Custom crosshair cursor with tracking, and link hover effects. (deps: gsap)
+- **CrystalizedBall** — A glass ball held together by a crackling electric rim, with a bowl of glowing dust inside that swirls in the cursor wake, shakes on click and lights up on mount, all from one color. (deps: ogl)
 - **Cubes** — 3D rotating cube cluster. Supports auto-rotation or hover interaction. (deps: gsap)
 - **CursorGrid** — Canvas grid whose cells light up around the cursor with configurable radius, falloff and click pulses. (deps: none)
 - **DitherVeil** — A photo printed as a 1-bit dither that the cursor burns through to full colour, leaving a trail that knits back cell by cell. (deps: ogl)
