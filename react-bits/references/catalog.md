@@ -120,7 +120,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **GooeyNav** — Navigation indicator morphs with gooey blob transitions between items. (deps: none)
 - **InfiniteMenu** — Horizontally looping menu effect that scrolls endlessly with seamless wrap. (deps: gl-matrix)
 - **InfiniteSpiral** — An endlessly looping 3D helix of images with customizable motion, depth, spacing and interaction. (deps: none)
-- **Lanyard** — Swinging 3D lanyard / badge card with realistic inertial motion. (deps: none)
+- **Lanyard** — Swinging 3D badge on a stretchy woven band. Print any image on the front, back and band, then drag, stretch, throw or click to flip it. (deps: three)
 - **LineSidebar** — Static list navigation with a cursor-proximity effect that shifts and highlights nearby items. (deps: none)
 - **MagicBento** — Interactive bento grid tiles expand + animate with various options. (deps: gsap)
 - **Masonry** — Responsive masonry layout with animated reflow + gaps optimization. (deps: gsap)
