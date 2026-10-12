@@ -9,10 +9,11 @@
 //   https://reactbits.dev/llms.txt          — category + one-line description (no deps)
 // registry.json has no category field. Catalog groups are llms.txt ## headings that contain
 // CLI names, excluding docs/Pro sections so new free categories (e.g. Micro) are picked up.
+// New registry entries may precede llms.txt; use their registry description until categorized.
 
 import { writeFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { dirname, join, resolve } from 'node:path';
 
 const BASE = 'https://reactbits.dev';
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'references', 'catalog.md');
@@ -79,52 +80,70 @@ function parseLlmsTxt(text) {
   return { byName, categories };
 }
 
-const [registry, llms] = await Promise.all([
-  getJson(`${BASE}/r/registry.json`),
-  getText(`${BASE}/llms.txt`),
-]);
-
-if (!Array.isArray(registry.items) || !registry.items.length) throw new Error('registry has no items');
-const { byName: meta, categories } = parseLlmsTxt(llms);
-if (!meta.size || !categories.length) throw new Error('llms.txt has no recognized components');
-const byTitle = new Map();
-for (const item of registry.items) {
-  if (!item.name.endsWith('-TS-TW')) continue; // one entry per component is enough for deps/description
-  byTitle.set(item.title, item);
-}
-
-const missingFromLlms = [...byTitle.keys()].filter((t) => !meta.has(t));
-const missingFromRegistry = [...meta.keys()].filter((t) => !byTitle.has(t));
-if (missingFromLlms.length) throw new Error(`in registry but not llms.txt: ${missingFromLlms.join(', ')}`);
-if (missingFromRegistry.length) throw new Error(`in llms.txt but not registry: ${missingFromRegistry.join(', ')}`);
-
-const byCategory = new Map(categories.map((c) => [c, []]));
-for (const [name, { category, description }] of meta) {
-  const deps = (byTitle.get(name).dependencies ?? []).map(depName);
-  byCategory.get(category).push({ name, description, deps: deps.length ? deps.join(',') : 'none' });
-}
-for (const list of byCategory.values()) list.sort((a, b) => a.name.localeCompare(b.name));
-
-const total = [...byCategory.values()].reduce((n, l) => n + l.length, 0);
-const lines = [
-  '# React Bits Component Catalog',
-  '',
-  `${total} components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from ${BASE}/llms.txt + ${BASE}/r/registry.json by \`scripts/gen-catalog.mjs\` — do not hand-edit, regenerate instead.`,
-  '',
-  'Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.',
-  '',
-  'Format: `Name — one-line description (deps: ...)`. Fetch with:',
-  '```',
-  'node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/components',
-  '```',
-];
-for (const category of categories) {
-  const items = byCategory.get(category);
-  lines.push(`\n## ${category} (${items.length})\n`);
-  for (const { name, description, deps } of items) {
-    lines.push(`- **${name}** — ${description} (deps: ${deps})`);
+export function buildCatalog(registry, llms) {
+  if (!Array.isArray(registry.items) || !registry.items.length) throw new Error('registry has no items');
+  const { byName: meta, categories } = parseLlmsTxt(llms);
+  if (!meta.size || !categories.length) throw new Error('llms.txt has no recognized components');
+  const byTitle = new Map();
+  for (const item of registry.items) {
+    if (!item.name.endsWith('-TS-TW')) continue; // one entry per component is enough for deps/description
+    byTitle.set(item.title, item);
   }
+
+  const missingFromLlms = [...byTitle.keys()].filter((t) => !meta.has(t));
+  const missingFromRegistry = [...meta.keys()].filter((t) => !byTitle.has(t));
+  if (missingFromRegistry.length) throw new Error(`in llms.txt but not registry: ${missingFromRegistry.join(', ')}`);
+
+  if (missingFromLlms.length) {
+    if (!categories.includes('Uncategorized')) categories.push('Uncategorized');
+    for (const name of missingFromLlms) {
+      const description = byTitle.get(name).description;
+      if (typeof description !== 'string' || !description.trim()) {
+        throw new Error(`registry component has no description: ${name}`);
+      }
+      meta.set(name, { category: 'Uncategorized', description: description.trim().replace(/\s+/g, ' ') });
+    }
+  }
+
+  const byCategory = new Map(categories.map((c) => [c, []]));
+  for (const [name, { category, description }] of meta) {
+    const deps = (byTitle.get(name).dependencies ?? []).map(depName);
+    byCategory.get(category).push({ name, description, deps: deps.length ? deps.join(',') : 'none' });
+  }
+  for (const list of byCategory.values()) list.sort((a, b) => a.name.localeCompare(b.name));
+
+  const total = [...byCategory.values()].reduce((n, l) => n + l.length, 0);
+  const lines = [
+    '# React Bits Component Catalog',
+    '',
+    `${total} components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from ${BASE}/llms.txt + ${BASE}/r/registry.json by \`scripts/gen-catalog.mjs\` — do not hand-edit, regenerate instead.`,
+    '',
+    'Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.',
+    '',
+    'Format: `Name — one-line description (deps: ...)`. Fetch with:',
+    '```',
+    'node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/components',
+    '```',
+  ];
+  for (const category of categories) {
+    const items = byCategory.get(category);
+    lines.push(`\n## ${category} (${items.length})\n`);
+    for (const { name, description, deps } of items) {
+      lines.push(`- **${name}** — ${description} (deps: ${deps})`);
+    }
+  }
+  return { content: lines.join('\n') + '\n', total, categories, missingFromLlms };
 }
 
-await writeFile(OUT, lines.join('\n') + '\n', 'utf8');
-console.log(`wrote ${OUT} (${total} components; categories: ${categories.join(', ')})`);
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  const [registry, llms] = await Promise.all([
+    getJson(`${BASE}/r/registry.json`),
+    getText(`${BASE}/llms.txt`),
+  ]);
+  const { content, total, categories, missingFromLlms } = buildCatalog(registry, llms);
+  if (missingFromLlms.length) {
+    console.warn(`in registry but not llms.txt; using registry descriptions under Uncategorized: ${missingFromLlms.join(', ')}`);
+  }
+  await writeFile(OUT, content, 'utf8');
+  console.log(`wrote ${OUT} (${total} components; categories: ${categories.join(', ')})`);
+}
