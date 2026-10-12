@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Test catalog generation
+        run: node --test react-bits/scripts/gen-catalog.test.mjs
+
       - name: Regenerate catalog from reactbits.dev
         run: node react-bits/scripts/gen-catalog.mjs
 

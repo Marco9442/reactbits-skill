@@ -34,6 +34,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" BlurText --variant TS-TW --dest src/compone
 [GitHub Action](.github/workflows/update-catalog.yml) 每日 **UTC 03:17 / 北京时间 11:17** 计划运行，从官方数据源刷新 [组件目录](react-bits/references/catalog.md)，有变化才提交。也可在 Actions 页面手动运行。
 
 - **目录**随 Action 更新；**组件源码和依赖**在每次调用脚本时从官方 registry 实时获取。
+- registry 中的组件若未出现在 `llms.txt`，目录使用 registry 的描述和依赖，暂列入 `Uncategorized`，并在运行日志中提示；上游补齐后，后续更新会自动恢复官方分类。
 - 不自动修改项目中已下载的组件，不自动合并社区工具仓库的代码改动。
 - 本地 Skill 副本需要自行更新；GitHub 上的目录更新不会自动同步到本地。
 
