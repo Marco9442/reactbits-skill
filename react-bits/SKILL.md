@@ -51,7 +51,7 @@ curl -fsS 'https://reactbits.dev/r/registry.json'
 - **HTTP 200 不代表成功**：未知路径可能返回 SPA HTML 页面，必须验证 JSON 内容。
 - **Scoped dependencies**：例如 `@react-three/fiber@^9.3.0`，不能简单按 `@` 分割。脚本已处理包名和版本范围。
 - **多文件**：CSS 变体通常包含组件文件和同级 CSS；始终保存 registry 返回的全部文件，而非假定只有一个文件。
-- **分类**：目录生成器从官方 `llms.txt` 读取分类和描述，并与官方 registry 核对；registry 没有分类字段。尚未被 `llms.txt` 收录的组件使用 registry 描述暂列入 `Uncategorized`，后续更新自动恢复官方分类。
+- **分类**：目录生成器从官方 `llms.txt` 读取分类和描述，并与官方 registry 核对；registry 没有分类字段。未被 `llms.txt` 收录的组件使用 registry 描述暂列入 `Uncategorized`，后续更新自动恢复官方分类。
 - **TypeScript**：若项目启用 `verbatimModuleSyntax`，按需将类型导入拆成 `import type`，不要因此重写组件。
 
 ## 更新目录

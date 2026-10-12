@@ -9,7 +9,7 @@
 //   https://reactbits.dev/llms.txt          — category + one-line description (no deps)
 // registry.json has no category field. Catalog groups are llms.txt ## headings that contain
 // CLI names, excluding docs/Pro sections so new free categories (e.g. Micro) are picked up.
-// New registry entries may precede llms.txt; use their registry description until categorized.
+// Registry entries may be absent from llms.txt; use their registry description until categorized.
 
 import { writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
