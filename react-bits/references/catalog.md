@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-217 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+218 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -137,7 +137,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **Stepper** — A multi-step flow with a gliding step indicator, spring transitions and horizontal or vertical layouts. (deps: @hugeicons/react,@hugeicons/core-free-icons)
 - **TiltedCard** — A 3D card that tilts toward the cursor, with glare, a soft shadow, floating layers and a flip side. (deps: none)
 
-## Micro (34)
+## Micro (35)
 
 - **BellToggle** — Pill toggle where a press rings the bell, crossfades the label and unfurls the pill. (deps: motion,@hugeicons/react,@hugeicons/core-free-icons)
 - **BranchedMenu** — Collapsible menu that branches each section from a trunk and traces a line to your pick. (deps: @hugeicons/react,@hugeicons/core-free-icons)
@@ -146,6 +146,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **CometDial** — Tick-ring dial you flick by angle, with a comet that streaks behind the lit head. (deps: motion)
 - **DodgeField** — Wrapper that makes any child dodge the pointer until it relents and glides home. (deps: motion)
 - **FlipCard** — Two-faced card that flips in 3D on a click, drag or flick and settles on a spring. (deps: motion)
+- **FlyingButton** — Button that fires its thrusters on hover, lifts off on a WebGL smoke plume and lands back in its own cloud. (deps: none)
 - **FolderFloat** — Folder whose notes spring out into a floating cloud when it opens on hover or press. (deps: matter-js)
 - **FuseButton** — Action button whose done state carries an undo on a burning fuse. (deps: @hugeicons/react,@hugeicons/core-free-icons)
 - **GlideSelect** — Select chip whose menu pops from its corner and whose highlight glides between rows. (deps: @hugeicons/react,@hugeicons/core-free-icons)
