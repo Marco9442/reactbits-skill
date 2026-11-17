@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-218 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+219 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -174,7 +174,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **WakeSlider** — Thumbless range slider of thin bars where drag speed raises a wake behind the handle. (deps: motion)
 - **WarmTooltip** — Tooltip group where the first label waits, then its siblings open instantly while warm. (deps: react-dom,motion)
 
-## Backgrounds (63)
+## Backgrounds (64)
 
 - **AcidSquares** — A rolling field of glossy squares that ripples under two drifting colored lights. (deps: none)
 - **AeroShards** — Silk ribbons of thick glass shards streaming on layered depths among survey markers, catching light along their edges. (deps: vgpu)
@@ -202,6 +202,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **GridDistortion** — Image background that breaks into a grid of blocks under the cursor and settles back into place. (deps: none)
 - **GridMotion** — A tilted wall of drifting tiles that slides with the pointer and lights up where it rests. (deps: none)
 - **GridScan** — A 3D grid room swept by a scanning light that follows your view. (deps: none)
+- **HoloMosaic** — Holographic tiles that split light into sweeping color as it moves, with glitter, a flip-in intro and click waves. (deps: none)
 - **Hyperspeed** — Night highway of glowing light trails on a winding road that warps into hyperspace while you hold. (deps: three)
 - **Iridescence** — Liquid iridescent surface with shifting folds that you can stir with the cursor. (deps: none)
 - **LetterGlitch** — A calm field of letters that flicker, scramble and glitch in color, stirred by the cursor and torn by clicks. (deps: none)
