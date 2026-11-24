@@ -1,6 +1,6 @@
 # React Bits Component Catalog
 
-219 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
+221 components. Supported variant names: JS-CSS, JS-TW, TS-CSS, TS-TW; check the live registry for availability. Generated from https://reactbits.dev/llms.txt + https://reactbits.dev/r/registry.json by `scripts/gen-catalog.mjs` — do not hand-edit, regenerate instead.
 
 Dependencies below summarize TS-TW metadata; the fetched variant is authoritative. Paths below use SKILL_DIR, the absolute directory containing SKILL.md. Run from the target project root.
 
@@ -45,7 +45,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **VariableProximity** — Letter styling changes continuously with pointer distance mapping. (deps: none)
 - **WarpText** — WebGL warp that bends and refracts the text around the pointer. (deps: ogl)
 
-## Animations (38)
+## Animations (39)
 
 - **AnimatedContent** — Wrapper that reveals its content on scroll with slides, blur, 3D tilts, soft wipes and staggered children. (deps: gsap)
 - **BlobCursor** — Liquid metal blob cursor that stretches, sloshes and bursts into droplets, in chrome, jelly, pearl or ink. (deps: three)
@@ -70,6 +70,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **Magnet** — Elements magnetically ease toward the cursor then settle back with spring physics. (deps: none)
 - **MetaBalls** — Liquid metaballs that merge, stretch and pinch apart, with a cursor blob that pushes through them. (deps: none)
 - **MetallicPaint** — Liquid chrome that flows over your logo or text, adapted from Paper's Liquid Metal shader. (deps: none)
+- **NeonLogo** — Turns any logo or word into a neon heat map that melts open under the cursor. (deps: none)
 - **Noise** — Film grain overlay for photos and pages, from fine 35mm grain to dust, paper and TV static. (deps: none)
 - **OrbitImages** — SVG Path customizable orbiting images effect. (deps: none)
 - **PixelSwap** — New content builds in pixel by pixel in a springy wave that starts wherever the cursor enters. (deps: none)
@@ -174,7 +175,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **WakeSlider** — Thumbless range slider of thin bars where drag speed raises a wake behind the handle. (deps: motion)
 - **WarmTooltip** — Tooltip group where the first label waits, then its siblings open instantly while warm. (deps: react-dom,motion)
 
-## Backgrounds (64)
+## Backgrounds (65)
 
 - **AcidSquares** — A rolling field of glossy squares that ripples under two drifting colored lights. (deps: none)
 - **AeroShards** — Silk ribbons of thick glass shards streaming on layered depths among survey markers, catching light along their edges. (deps: vgpu)
@@ -218,6 +219,7 @@ node "$SKILL_DIR/scripts/rb-add.mjs" <Name> --variant TS-TW --dest src/component
 - **MagnetLines** — A field of magnetic lines that swing toward the cursor, ripple outward and spin with every click. (deps: none)
 - **MicroSlats** — A wall of tiny slats that becomes a rolling sea in perspective, with glinting crests. (deps: ogl)
 - **MoltenMetal** — Swirling caustic filaments with white-hot cores that heat up under the cursor and flare on click. (deps: none)
+- **NeonGlyphs** — A deep field of glowing neon glyphs floating through a 3D plane, with bloom and a color-split edge fade. (deps: none)
 - **Orb** — A glowing ring of swirling color that breathes, trails an orbiting light and reaches toward the cursor. (deps: none)
 - **Particles** — A drifting 3D field of particles with glow, twinkle, constellation lines and cursor interaction. (deps: none)
 - **PatternWaves** — A lit halftone surface of dots, lines or glyphs that moves like draped silk. (deps: ogl)
